@@ -1,0 +1,13 @@
+name: learn-github-actions
+on: [push]
+jobs:
+  Build and Deploy with TAP:
+    runs-on: [self-hosted]
+    steps:
+]      - uses: actions/checkout@v3
+        with:
+          ref: main
+      - run: kubectl apply -f config/workload.yaml
+      - run: tanzu apps workload get spring-sensors
+      - run: sleep 15
+      - run: kp build logs spring-sensors
