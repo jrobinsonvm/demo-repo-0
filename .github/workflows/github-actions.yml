@@ -1,10 +1,12 @@
 name: learn-github-actions
 on: [push]
 jobs:
-  Build and Deploy with TAP:
+  check-bats-version:
     runs-on: [self-hosted]
     steps:
-]      - uses: actions/checkout@v3
+      - run: pwd
+      - run: ls -lah
+      - uses: actions/checkout@v3
         with:
           ref: main
       - run: kubectl apply -f config/workload.yaml
